@@ -35,7 +35,7 @@ jobs:
         id: curlget
         run: | 
           RESPONSE=$(curl -s https://jsonplaceholder.typicode.com/posts/1)
-          print -r "FOO=$RESPONSE" >> $GITHUB_OUTPUT
+          printf "%s" "FOO=$RESPONSE" >> $GITHUB_OUTPUT
         
       - name: do stuff with the response from curl
         run: ${{ steps.curlget.outputs.FOO }} | jq .title
