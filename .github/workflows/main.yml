@@ -42,7 +42,7 @@ jobs:
         run: |
           {
             echo 'JSON_RESPONSE<<EOF'
-            curl curl -s https://jsonplaceholder.typicode.com/posts/1
+            curl -s https://jsonplaceholder.typicode.com/posts/1
             echo EOF
           } >> "$GITHUB_OUTPUT"
         
