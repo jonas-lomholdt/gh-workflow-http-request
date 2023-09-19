@@ -32,3 +32,14 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: CURL Post
         run: "curl -d \"{'title':'CURL Post', 'body': 'Great CURL Post'}\" -H \"Content-Type: application/json\" -X POST https://jsonplaceholder.typicode.com/posts"
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: fetch get script
+        run: node fetch-get.js
+
+      - name: fetch post script
+        run: node fetch-post.js
