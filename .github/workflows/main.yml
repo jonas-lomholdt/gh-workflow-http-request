@@ -31,11 +31,20 @@ jobs:
       - name: fetch POST script
         run: node fetch-post.js
 
-      - name: curl GET Output
-        id: curlget
-        run: | 
-          RESPONSE=$(curl -s https://jsonplaceholder.typicode.com/posts/1)
-          printf "%s" "FOO=$RESPONSE" >> $GITHUB_OUTPUT
+      # - name: curl GET Output
+      #   id: curlget
+      #   run: | 
+      #     RESPONSE=$(curl -s https://jsonplaceholder.typicode.com/posts/1)
+      #     printf "%s" "FOO=$RESPONSE" >> $GITHUB_OUTPUT
+
+      - name: foo
+        id: bar
+        run: |
+          {
+            echo 'JSON_RESPONSE<<EOF'
+            curl curl -s https://jsonplaceholder.typicode.com/posts/1
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
         
       - name: do stuff with the response from curl
-        run: ${{ steps.curlget.outputs.FOO }} | jq .title
+        run: ${{ steps.bar.outputs.JSON_RESPONSE }} | jq .title
