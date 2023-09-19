@@ -31,4 +31,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: CURL Post
-        run: curl -d '{"title":"CURL Post", "body": "Great CURL Post"}' -H "Content-Type: application/json" -X POST https://jsonplaceholder.typicode.com/posts
+        run: "curl -d \"{'title':'CURL Post', 'body': 'Great CURL Post'}\" -H \"Content-Type: application/json\" -X POST https://jsonplaceholder.typicode.com/posts"
