@@ -47,4 +47,4 @@ jobs:
           } >> $GITHUB_OUTPUT
 
       - name: do stuff with the response from curl
-        run: printf "%s" "${{ steps.bar.outputs.FOO }}" | jq .title
+        run: printf "%s" "${{ steps.bar.outputs.RESPONSE }}" | jq .title
