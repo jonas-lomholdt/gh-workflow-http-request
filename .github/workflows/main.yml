@@ -44,7 +44,7 @@ jobs:
             echo 'RESPONSE<<EOF'
             curl -s https://jsonplaceholder.typicode.com/posts/1
             echo 'EOF'
-          } >> $GITHUB_OUTPUT
+          } >> "$GITHUB_OUTPUT"
 
       - name: do stuff with the response from curl
         run: echo "${{ steps.bar.outputs.RESPONSE }}" | jq .title
