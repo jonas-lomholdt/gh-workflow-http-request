@@ -40,11 +40,10 @@ jobs:
       - name: foo
         id: bar
         run: |
-          {
-            echo 'JSON_RESPONSE<<EOF'
-            curl -s https://jsonplaceholder.typicode.com/posts/1
-            echo EOF
-          } >> "$GITHUB_OUTPUT"
+          echo 'JSON_RESPONSE<<EOF'
+          curl -s https://jsonplaceholder.typicode.com/posts/1
+          echo EOF
+          >> $GITHUB_OUTPUT
         
       - name: do stuff with the response from curl
         run: ${{ steps.bar.outputs.JSON_RESPONSE }} | jq .title
