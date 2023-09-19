@@ -37,6 +37,12 @@ jobs:
       #       echo 'RESPONSE<<END' >> "$GITHUB_OUTPUT"
       #       curl -s https://jsonplaceholder.typicode.com/posts/1 >> "$GITHUB_OUTPUT"
       #       echo 'END' >> "$GITHUB_OUTPUT"
+      
+      - name: curl GET output
+        id: bar
+        run: |
+            echo RESPONSE=$(curl -s https://jsonplaceholder.typicode.com/posts/1)
+            echo FOO=$RESPONSE >> "$GITHUB_OUTPUT"
 
-      # - name: do stuff with the response from curl
-      #   run: echo "${{ steps.bar.outputs.RESPONSE }}" | jq .title
+      - name: do stuff with the response from curl
+        run: printf "%s" "${{ steps.bar.outputs.FOO }}" | jq .title
